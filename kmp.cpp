@@ -1,10 +1,8 @@
 #define MAXN 10000
 #define _match(a,b) ((a) == (b))
 
-typedef char elem_t;
-
-int pattern_match(int ls, elem_t*str, int lp, elem_t *pat) {
-    int fail[MAXN] = {-1}, i = 0, j;
+int kmp(char *str, int ls, char *pat, int lp) {
+    int fail[MAXN] = {-1}, i, j;
 
     for (j = 1; j < lp; j++) {
         for (i = fail[j - 1]; i >= 0 && !_match(pat[i + 1], pat[j]); i = fail[i]);
